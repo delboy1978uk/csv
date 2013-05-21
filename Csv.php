@@ -9,29 +9,49 @@ class Del_Csv
      */
     public static function toArray($csv,$object = true)
     {
-	if($object == false)
-	{
-		$object = 'array()';
-	}
-	else
-	{
-		$object = 'new ArrayObject()';
-	}
+        if($object == false)
+        {
+            $array = array();
+        }
+        else
+        {
+            $array = new ArrayObject();
+        }
         if(!file_exists($csv))
         {
             throw new Exception('CSV File not found',404);
         }
-        $array = $object;
         if (($handle = fopen($csv, "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE)
             {
                 $count = count($data);
-                $item = $object;
+                if($object == false)
+                {
+                    $item = array();
+                }
+                else
+                {
+                    $item = new ArrayObject();
+                }
                 for($x = 1; $x <= $count; $x ++)
                 {
-                    $item->append($data[$x]);
+                    if($item instanceof ArrayObject)
+                    {
+                        $item->append($data[$x]);
+                    }
+                    else
+                    {
+                        array_push($item,$data[$x]);
+                    }
                 }
-                $array->append($item);
+                if($array instanceof ArrayObject)
+                {
+                    $array->append($item);
+                }
+                else
+                {
+                    array_push($array,$item);
+                }
             }
         }
         return $array;
