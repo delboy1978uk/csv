@@ -15,18 +15,18 @@ class Del_Csv
 	}
 	else
 	{
-		$object = 'ArrayObject()';
+		$object = 'new ArrayObject()';
 	}
         if(!file_exists($csv))
         {
             throw new Exception('CSV File not found',404);
         }
-        $array = new $object;
+        $array = $object;
         if (($handle = fopen($csv, "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE)
             {
                 $count = count($data);
-                $item = new $object;
+                $item = $object;
                 for($x = 1; $x <= $count; $x ++)
                 {
                     $item->append($data[$x]);
