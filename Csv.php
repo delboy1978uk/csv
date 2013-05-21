@@ -21,37 +21,37 @@ class Del_Csv
         {
             throw new Exception('CSV File not found',404);
         }
-        if (($handle = fopen($csv, "r")) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE)
+        $file = new SplFileObject($csv);
+        $file->setFlags(SplFileObject::READ_CSV);
+        foreach ($file as $data)
+        {
+            $count = count($data);
+            if($object == false)
             {
-                $count = count($data);
-                if($object == false)
+                $item = array();
+            }
+            else
+            {
+                $item = new ArrayObject();
+            }
+            for($x = 1; $x <= $count; $x ++)
+            {
+                if($item instanceof ArrayObject)
                 {
-                    $item = array();
+                    $item->append($data[$x]);
                 }
                 else
                 {
-                    $item = new ArrayObject();
+                    array_push($item,$data[$x]);
                 }
-                for($x = 1; $x <= $count; $x ++)
-                {
-                    if($item instanceof ArrayObject)
-                    {
-                        $item->append($data[$x]);
-                    }
-                    else
-                    {
-                        array_push($item,$data[$x]);
-                    }
-                }
-                if($array instanceof ArrayObject)
-                {
-                    $array->append($item);
-                }
-                else
-                {
-                    array_push($array,$item);
-                }
+            }
+            if($array instanceof ArrayObject)
+            {
+                $array->append($item);
+            }
+            else
+            {
+                array_push($array,$item);
             }
         }
         return $array;
