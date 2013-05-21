@@ -1,7 +1,7 @@
 del-csv
 =======
 
-PHP Static Class which converts a CSV file to an Array Object
+PHP Static Class which converts a CSV file to either an SPL Array Object or just a plain array
 
 Usage:
 
