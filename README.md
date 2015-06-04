@@ -2,8 +2,14 @@ csv
 =======
 
 PHP Static Class which converts a CSV file to either an SPL Array Object or just a plain array
-
-Usage:
+Installation
+------------
+Insert the following into your composer.json
+```
+"delboy1978uk/csv":"v1.0"
+```
+Usage
+-----
 ```php
 use Del\Csv;
 
