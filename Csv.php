@@ -34,7 +34,7 @@ class Del_Csv
             {
                 $item = new ArrayObject();
             }
-            for($x = 0; $x <= $count; $x ++)
+            for($x = 0; $x < $count; $x ++)
             {
                 if($item instanceof ArrayObject)
                 {
