@@ -3,6 +3,7 @@
 namespace Del;
 
 use SplFileObject;
+use Exception;
 
 class Csv
 {
