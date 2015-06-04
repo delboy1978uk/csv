@@ -1,0 +1,16 @@
+{
+    "name": "delboy1978uk/csv",
+    "description": "Converts a CSV file to either an SPL Array Object or just a plain array",
+    "authors": [
+        {
+            "name": "Derek McLean",
+            "email": "delboy1978uk@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Del\\": "src/"
+        }
+    }
+}

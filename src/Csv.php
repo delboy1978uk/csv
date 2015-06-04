@@ -1,5 +1,8 @@
 <?php
-class Del_Csv
+
+namespace Del;
+
+class Csv
 {
     /**
      * @param string $csv the file pathname
